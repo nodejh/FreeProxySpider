@@ -5,9 +5,9 @@ const proxyUnCheckedSchema = new Schema({
   ip: String,
   port: String,
   category: String, // 类别 高匿／透明／未知(如来自API)
-  checkCount: { type: Number, default: 0 }, // 检测次数
-  checkDate: { type: Date, default: Date.now }, // 检测日期
-  date: { type: Date, default: Date.now }, // 爬取日期
+  checkedCount: { type: Number, default: 0 }, // 检测通过次数
+  checkedCountDate: Date, // 检测时间
+  date: { type: Date, default: Date.now }, // 存入日期
 });
 
 

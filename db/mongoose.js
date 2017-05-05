@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const logger = require('./../utils/winston');
-const config = require('./../../config/config');
+const config = require('./../config');
+
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongodb);

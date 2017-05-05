@@ -1,20 +1,17 @@
 const mongoose = require('./../db/mongoose');
 
 const Schema = mongoose.Schema;
-const resourcesSchema = new Schema({
-  title: String, // 资源标题
-  urlPanduoduo: String, // 盘多多的 URL
-  urlPanbaidu: String, // 百度网盘的 URL
-  urlCurrentPage: String, // 当前页面的 URL
-  categry: String, // 类别
-  size: String, // 大小
+const proxyUnCheckedSchema = new Schema({
+  ip: String,
+  port: String,
+  category: String, // 类别 高匿／透明／未知(如来自API)
+  checkCount: { type: Number, default: 0 }, // 检测次数
+  checkDate: { type: Date, default: Date.now }, // 检测日期
   date: { type: Date, default: Date.now }, // 爬取日期
-  publishDate: { type: Date, default: Date.now }, // 发布日期
-  error: Schema.Types.Mixed,
 });
 
 
-const Resources = mongoose.model('Resources', resourcesSchema);
+const ProxyUnChecked = mongoose.model('proxyUnChecked', proxyUnCheckedSchema);
 
 
-module.exports = Resources;
+module.exports = ProxyUnChecked;

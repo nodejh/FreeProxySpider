@@ -2,7 +2,7 @@
   "name": "free-proxy-spider",
   "version": "1.0.0",
   "description": "free proxy spider",
-  "main": "check.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/nodejh/FreeProxySpider#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "mongoose": "^4.9.7",
     "superagent": "^3.5.2"
   }
 }

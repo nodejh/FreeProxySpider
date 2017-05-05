@@ -1,7 +1,7 @@
 const mongoose = require('./../db/mongoose');
 
 const Schema = mongoose.Schema;
-const proxyUnCheckedSchema = new Schema({
+const proxySchema = new Schema({
   ip: String,
   port: String,
   category: String, // 类别 高匿／透明／未知(如来自API)
@@ -11,7 +11,7 @@ const proxyUnCheckedSchema = new Schema({
 });
 
 
-const ProxyUnChecked = mongoose.model('proxyUnChecked', proxyUnCheckedSchema);
+const Proxy = mongoose.model('proxy', proxySchema);
 
 
-module.exports = ProxyUnChecked;
+module.exports = Proxy;

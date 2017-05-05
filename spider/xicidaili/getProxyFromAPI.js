@@ -1,11 +1,8 @@
-// 通过 API 提取代理
-// http://www.xicidaili.com/api
-// 本月API提取地址：
-// API链接中的IP地址每15分钟更新一次，因此不建议频繁读取API，15分钟来读取一次即可。
-// http://api.xicidaili.com/free2016.txt
+const os = require('os');
 const superagent = require('superagent');
 // const cheerio = require('cheerio');
 const config = require('./config');
+const ProxyModel = require('./../../model/proxy');
 const logger = require('./../../utils/winston');
 
 
@@ -29,17 +26,33 @@ function getProxyFromAPI(url) {
 }
 
 
-function saveToDB() {
-
+/**
+ * 将数据保存在数据库
+ * @param {Array} data 存储 API 的数组
+ * @return {*|Promise}
+ */
+function save(data) {
+  const values = data.split(os.EOL).map((item) => {
+    return {
+      ip: item.split(':')[0],
+      port: item.split(':')[1],
+      protocol: 'http',
+      category: 'API', // 类别 高匿／透明／API(来自API)
+    };
+  });
+  return ProxyModel.insertMany(values);
 }
 
 
 async function main() {
   try {
-    const proxies = await getProxyFromAPI(config.API_URL);
+    const data = await getProxyFromAPI(config.API_URL);
+    await save(data);
+    logger.info('通过 API 提取代理完毕');
   } catch (error) {
     logger.error(`${new Date()} [error]: ${error.message} ${error.stack}`);
   }
 }
 
-main();
+
+module.exports = main;

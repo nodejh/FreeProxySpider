@@ -1,0 +1,27 @@
+{
+  "name": "free-proxy-spider",
+  "version": "1.0.0",
+  "description": "free proxy spider",
+  "main": "check.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejh/FreeProxySpider.git"
+  },
+  "keywords": [
+    "proxy",
+    "spider"
+  ],
+  "author": "nodejh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nodejh/FreeProxySpider/issues"
+  },
+  "homepage": "https://github.com/nodejh/FreeProxySpider#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "superagent": "^3.5.2"
+  }
+}
